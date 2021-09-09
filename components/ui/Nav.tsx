@@ -25,7 +25,7 @@ export function Nav() {
         <a>Users</a>
       </Link>
       <Link href="/users/1">
-        <a>User Profile</a>
+        <a>Single User</a>
       </Link>
     </nav>
   )
