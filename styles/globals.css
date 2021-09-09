@@ -50,7 +50,7 @@ button {
 }
 
 button:hover {
-  background-color: #00d1ff;
+  background-color: #335bf1;
   color: white;
 }
 
@@ -69,4 +69,9 @@ button:hover {
 
 .loading {
   margin: 40vh auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
 }

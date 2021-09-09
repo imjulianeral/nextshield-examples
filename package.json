@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^1.2.1",
     "next": "11.1.2",
     "next-shield": "^2.0.16",
     "react": "17.0.2",

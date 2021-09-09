@@ -6,8 +6,11 @@ export function Nav() {
       <Link href="/">
         <a>Home</a>
       </Link>
-      <Link href="/login">
-        <a>Login</a>
+      <Link href="/sign-up">
+        <a>Sign Up</a>
+      </Link>
+      <Link href="/sign-in">
+        <a>Sign In</a>
       </Link>
       <Link href="/pricing">
         <a>Pricing</a>

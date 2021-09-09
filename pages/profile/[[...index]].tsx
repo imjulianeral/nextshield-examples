@@ -1,10 +1,10 @@
 import { Layout } from '@/components/routes/Layout'
+import { UserProfile } from '@clerk/clerk-react'
 
 export default function Profile() {
   return (
     <Layout title="Profile">
-      <h1>Profile</h1>
-      <button>Sign Out</button>
+      <UserProfile path="/profile" routing="path" />
     </Layout>
   )
 }

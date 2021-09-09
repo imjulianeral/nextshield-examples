@@ -1,5 +1,5 @@
-export interface Profile {
-  id: string
-  name: string
-  role: string
-}
+export type Metadata =
+  | {
+      role?: string
+    }
+  | undefined
