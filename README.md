@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="NextShield Example" src="./public/cover.png" width="300" />
+  <img alt="NextShield Example" src="./public/cover.png"  />
 </p>
 <h1 align="center">
   NextShield Examples
