@@ -1,13 +1,14 @@
-import { User } from '@supabase/gotrue-js'
-
-export interface Metadata {
-  avatar_url: string
-  full_name: string
+export interface UserProfile {
+  id: string
   role: string
 }
 
 export interface Auth {
   isAuth: boolean
   isLoading: boolean
-  user: User | null | undefined
+  user: UserProfile | null | undefined
 }
+
+export type AuthStore = {
+  updateAuth: (params: Auth) => void
+} & Auth

@@ -1,13 +1,11 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
+import { useSnapshot } from 'valtio'
+import { authStore } from '@/store'
 import { supabase } from '@/db/connection'
-import { Auth } from '@/types/User'
+import { UserProfile } from '@/types/User'
 
 export function useAuth() {
-  const [state, setState] = useState<Auth>({
-    user: supabase.auth.user(),
-    isAuth: !!supabase.auth.user(),
-    isLoading: false,
-  })
+  const { updateAuth, ...state } = useSnapshot(authStore)
 
   const signIn = useCallback(async () => {
     await supabase.auth.signIn({ provider: 'google' })
@@ -18,10 +16,15 @@ export function useAuth() {
   }, [])
 
   useEffect(() => {
-    const { data } = supabase.auth.onAuthStateChange((_, session) => {
-      if (session?.user) {
-        setState({
-          user: session.user,
+    const getUserProfile = async () => {
+      const { data: profile } = await supabase
+        .from<UserProfile>('profiles')
+        .select('id, role')
+        .single()
+
+      if (profile) {
+        updateAuth({
+          user: profile,
           isAuth: true,
           isLoading: false,
         })
@@ -29,15 +32,35 @@ export function useAuth() {
         return
       }
 
-      setState({
+      updateAuth({
         user: null,
         isAuth: false,
         isLoading: false,
       })
+    }
+
+    getUserProfile()
+
+    const { data } = supabase.auth.onAuthStateChange(() => {
+      getUserProfile()
     })
 
-    return () => data?.unsubscribe()
-  }, [])
+    const profile = supabase
+      .from<UserProfile>('profiles')
+      .on('UPDATE', payload => {
+        updateAuth({
+          user: payload.new,
+          isAuth: true,
+          isLoading: false,
+        })
+      })
+      .subscribe()
+
+    return () => {
+      data?.unsubscribe()
+      supabase.removeSubscription(profile)
+    }
+  }, [updateAuth])
 
   return {
     signIn,
