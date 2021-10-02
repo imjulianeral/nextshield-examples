@@ -35,7 +35,7 @@ a {
 
 a:hover {
   color: black;
-  background-color: white;
+  background-color: #3cce8d;
 }
 
 button {
@@ -51,8 +51,7 @@ button {
 }
 
 button:hover {
-  background-color: #00d1ff;
-  color: white;
+  background-color: #3cce8d;
 }
 
 .center {
