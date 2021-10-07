@@ -2,9 +2,14 @@ import { useCallback, useEffect } from 'react'
 import { useSnapshot } from 'valtio'
 import { authStore } from '@/store'
 import { supabase } from '@/db/client'
-import { UserProfile } from '@/types/User'
+import { Auth, UserProfile } from '@/types/User'
 
-export function useAuth() {
+type AuthHook = {
+  signIn: () => Promise<void>
+  signOut: () => Promise<void>
+} & Auth
+
+export function useAuth(): AuthHook {
   const { updateAuth, ...state } = useSnapshot(authStore)
 
   const signIn = useCallback(async () => {
