@@ -1,6 +1,6 @@
 import { proxy } from 'valtio'
 
-import { supabase } from '@/db/connection'
+import { supabase } from '@/db/client'
 import type { AuthStore } from '@/types/User'
 
 export const authStore = proxy<AuthStore>({

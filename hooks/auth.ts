@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react'
 import { useSnapshot } from 'valtio'
 import { authStore } from '@/store'
-import { supabase } from '@/db/connection'
+import { supabase } from '@/db/client'
 import { UserProfile } from '@/types/User'
 
 export function useAuth() {

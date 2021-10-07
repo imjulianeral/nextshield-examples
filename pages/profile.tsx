@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { Layout } from '@/components/routes/Layout'
-import { supabase } from '@/db/connection'
+import { supabase } from '@/db/client'
 import { useAuth } from '@/hooks/auth'
 
 export default function Profile() {
