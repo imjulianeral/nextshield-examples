@@ -34,8 +34,7 @@ a {
 }
 
 a:hover {
-  color: black;
-  background-color: white;
+  background-color: #335bf1;
 }
 
 button {
